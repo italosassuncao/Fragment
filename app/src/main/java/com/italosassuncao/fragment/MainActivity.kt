@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.commit
+import androidx.fragment.app.replace
 import com.italosassuncao.fragment.fragments.ChamadasFragment
 import com.italosassuncao.fragment.fragments.ConversasFragment
 
@@ -38,10 +40,15 @@ class MainActivity : AppCompatActivity() {
 
             conversasFragment.arguments = bundle
 
-            supportFragmentManager
+            /*supportFragmentManager
                 .beginTransaction()
                 .replace(R.id.fragment_content, conversasFragment)
-                .commit()
+                .commit()*/
+
+            // Passos utilizando o Kotlin KTX
+            supportFragmentManager.commit {
+                replace<ConversasFragment>(R.id.fragment_content, args = bundle)
+            }
         }
 
         buttonChamadas.setOnClickListener {
