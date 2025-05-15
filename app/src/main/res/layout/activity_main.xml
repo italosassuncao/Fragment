@@ -22,12 +22,12 @@
         app:layout_constraintGuide_percent="0.5" />
 
     <Button
-        android:id="@+id/button_conversas"
+        android:id="@+id/buttonMercado"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:text="Conversas"
+        android:text="Mercado"
         app:layout_constraintBottom_toTopOf="@+id/guideline"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="parent"

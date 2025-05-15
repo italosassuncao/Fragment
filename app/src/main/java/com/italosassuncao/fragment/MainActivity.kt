@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.italosassuncao.fragment.fragments.ChamadasFragment
@@ -11,7 +12,7 @@ import com.italosassuncao.fragment.fragments.ConversasFragment
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var buttonConversas: Button
+    private lateinit var buttonMercado: Button
     private lateinit var buttonChamadas: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,7 +20,7 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        buttonConversas = findViewById(R.id.button_conversas)
+        buttonMercado = findViewById(R.id.buttonMercado)
         buttonChamadas = findViewById(R.id.button_chamadas)
 
         val fragment = supportFragmentManager.beginTransaction()
@@ -27,10 +28,19 @@ class MainActivity : AppCompatActivity() {
         fragment.commit()*/
 
         // Alternativa
-        buttonConversas.setOnClickListener {
+        buttonMercado.setOnClickListener {
+            val conversasFragment = ConversasFragment()
+
+            val bundle = bundleOf(
+                "categoria" to "Mercado",
+                "usuario" to "italo"
+            )
+
+            conversasFragment.arguments = bundle
+
             supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.fragment_content, ConversasFragment())
+                .replace(R.id.fragment_content, conversasFragment)
                 .commit()
         }
 

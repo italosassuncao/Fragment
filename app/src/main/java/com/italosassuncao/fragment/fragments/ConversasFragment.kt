@@ -17,7 +17,11 @@ class ConversasFragment : Fragment(R.layout.fragment_conversas) {
 
     private lateinit var buttonExecutar: Button
     private lateinit var textNome: TextView
+    private lateinit var textCategoria: TextView
     private lateinit var editNome: EditText
+
+    private var categoria: String? = null
+    private var usuario: String? = null
 
     //ciclo de vida do fragment
 
@@ -29,6 +33,8 @@ class ConversasFragment : Fragment(R.layout.fragment_conversas) {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         Log.i("ciclo_vida", "Fragment onCreate")
+        categoria = arguments?.getString("categoria")
+        usuario = arguments?.getString("usuario")
     }
 
     // No fragment é necessário construir e retornar a view manualmente, diferente da activity
@@ -47,6 +53,10 @@ class ConversasFragment : Fragment(R.layout.fragment_conversas) {
         buttonExecutar = view?.findViewById(R.id.buttonExecutar) ?: Button(requireContext())
         textNome = view?.findViewById(R.id.textNome) ?: TextView(requireContext())
         editNome = view?.findViewById(R.id.editNome) ?: EditText(requireContext())
+        textCategoria = view?.findViewById(R.id.textCategoria) ?: TextView(requireContext())
+
+        textCategoria.text = categoria
+        textNome.text = usuario
 
         buttonExecutar.setOnClickListener {
             textNome.text = editNome.text.toString()
